@@ -25,17 +25,40 @@ console.log(animalNames);
 // Task 2 — Log each animal with .forEach()
 // ---------------------------------------------------------------------------
 
+// .forEach() runs the callback once per animal, but doesn't return anything
+animals.forEach((animal) => {
+	console.log(`Name: ${animal.name} Species: ${animal.species}`);
+});
+
 // ---------------------------------------------------------------------------
 // Task 3 — Log each animal again with for...of
 // ---------------------------------------------------------------------------
+
+// for...of loops directly over the array's values
+for (const animal of animals) {
+	console.log(`Age: ${animal.age} Adopted: ${animal.adopted}`);
+}
 
 // ---------------------------------------------------------------------------
 // Task 4 — Adopted and available animals with .filter()
 // ---------------------------------------------------------------------------
 
+// .filter() returns a new array containing only the animals that pass the test
+const adoptedAnimals = animals.filter((animal) => animal.adopted);
+const availableAnimals = animals.filter((animal) => !animal.adopted);
+console.log(adoptedAnimals);
+console.log(availableAnimals);
+
 // ---------------------------------------------------------------------------
 // Task 5 — Available dogs with method chaining
 // ---------------------------------------------------------------------------
+
+// availableDogs: the names of dogs that haven't been adopted yet.
+// Chains .filter() (keep only unadopted dogs) into .map() (pull out just the name field).
+const availableDogs = animals
+	.filter((animal) => animal.species === "dog" && !animal.adopted)
+	.map((animal) => animal.name);
+console.log(availableDogs);
 
 // ---------------------------------------------------------------------------
 // Task 6 — Average age with .reduce()
